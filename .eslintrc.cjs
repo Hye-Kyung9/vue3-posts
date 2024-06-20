@@ -1,28 +1,32 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
-  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/eslint-config-prettier'],
   env: {
-    'vue/setup-compiler-macros': true
+    node: true
+  },
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', 'prettier', 'vue', 'standard'],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-react']
+    }
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'prettier/prettier': [
       'error',
       {
         singleQuote: true,
         semi: true,
-        useTabs: true,
         tabWidth: 2,
-        trailingComma: 'all',
-        printWidth: 80,
-        bracketSpacing: true,
-        arrowParens: 'avoid',
-        endOfLine: 'auto' // 한줄 추가
+        useTabs: false
       }
-    ]
-  }
-}
+    ],
+
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+  },
+  plugins: ['prettier', 'import', 'vue']
+};
