@@ -12,6 +12,8 @@
         ></PostItem>
       </div>
     </div>
+    <hr class="my-4" />
+    <PostDetailView id="1"></PostDetailView>
   </div>
 </template>
 
@@ -20,6 +22,7 @@ import PostItem from '@/components/posts/PostItem.vue';
 import { ref } from 'vue';
 import { getPosts } from '@/api/posts';
 import { useRouter } from 'vue-router';
+import PostDetailView from './PostDetailView.vue';
 
 const posts = ref([]);
 const router = useRouter();
