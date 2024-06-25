@@ -31,8 +31,12 @@ const posts = ref([]);
 const router = useRouter();
 
 const fetchPosts = async () => {
-  const { data } = await getPosts();
-  posts.value = data;
+  try {
+    const { data } = await getPosts();
+    posts.value = data;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 fetchPosts();
