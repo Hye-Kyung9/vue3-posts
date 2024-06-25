@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 //TODO : 추후 axios로 수정
 const posts = [
   { id: 1, title: '제목1', content: '내용1', createdAt: '2024-06-21' },
@@ -8,9 +10,20 @@ const posts = [
 ];
 
 export function getPosts() {
-  return posts;
+  return axios.get('http://localhost:5001/posts');
 }
 
 export function getPostById(id) {
-  return posts.find((item) => item.id === id);
+  return axios.get(`http://localhost:5001/posts/${id}`);
+}
+
+export function createPost(data) {
+  return axios.post(`http://localhost:5001/posts`, data);
+}
+
+export function updatePost(id, data) {
+  return axios.put(`http://localhost:5001/posts/${id}`, data);
+}
+export function deletePost(id) {
+  return axios.delete(`http://localhost:5001/posts/${id}`);
 }
