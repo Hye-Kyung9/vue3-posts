@@ -13,7 +13,9 @@
       </div>
       <div class="col-auto me-auto"></div>
       <div class="col-auto">
-        <button class="btn btn-outline-dark" @click="goListPage">목록</button>
+        <button class="btn btn-outline-dark" @click="goListPage">
+          {{ post.title ? '목록' : '' }}
+        </button>
       </div>
       <div class="col-auto">
         <button class="btn btn-outline-primary" @click="goEditPage">수정</button>
@@ -22,6 +24,7 @@
         <button class="btn btn-outline-danger" @click="remove">삭제</button>
       </div>
     </div>
+    <CompoTest />
   </div>
 </template>
 
@@ -29,10 +32,18 @@
 import { useRouter } from 'vue-router';
 import { deletePost, getPostById } from '@/api/posts';
 import { ref } from 'vue';
+import CompoTest from '@/components/CompoTest.vue';
 
 const props = defineProps({
   id: Number
 });
+// const ComPoTest = () => {
+//   return (
+//     <>
+//       <div>뷰 너가 이것도 할 수 있겠어?</div>
+//     </>
+//   );
+// };
 const router = useRouter();
 // const route = useRoute();
 // const id = route.params.id;
@@ -78,5 +89,3 @@ const goEditPage = () => {
   });
 };
 </script>
-
-<style lang="scss" scoped></style>

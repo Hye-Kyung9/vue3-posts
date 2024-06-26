@@ -49,5 +49,3 @@ const goListPage = () => {
   });
 };
 </script>
-
-<style lang="scss" scoped></style>
